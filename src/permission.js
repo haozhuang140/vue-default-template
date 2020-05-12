@@ -4,13 +4,13 @@
  * @Autor: haozhuang
  * @Date: 2020-03-30 11:43:31
  * @LastEditors: haozhuang
- * @LastEditTime: 2020-03-30 11:45:59
+ * @LastEditTime: 2020-04-10 17:06:45
  */
 import router from "./router";
 
 router.beforeEach(async (to, from, next) => {
   // set page title
-  document.title = getPageTitle(to.meta.title);
+  document.title = to.meta.title;
 
   next();
 });

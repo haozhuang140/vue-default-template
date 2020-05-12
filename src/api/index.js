@@ -8,9 +8,9 @@
  */
 import request from "@/utils/request";
 
-export function contentGeneral(params) {
+export function getFacebook(params) {
   return request({
-    url: "",
+    url: "http://www.facebook.com/",
     method: "get",
     params
   });
