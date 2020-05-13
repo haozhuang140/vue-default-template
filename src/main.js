@@ -1,28 +1,31 @@
-/*
- * @Description:
- * @Version: 1.0
- * @Autor: haozhuang
- * @Date: 2020-03-30 11:29:28
- * @LastEditors: haozhuang
- * @LastEditTime: 2020-03-30 11:43:48
+import Vue from 'vue'
+
+import '@/styles/index.scss' // global css
+
+import App from './App'
+import store from './store'
+import router from './router'
+
+import '@/permission' // permission control
+
+/**
+ * If you don't want to use mock-server
+ * you want to use MockJs for mock api
+ * you can execute: mockXHR()
+ *
+ * Currently MockJs will be used in the production environment,
+ * please remove it before going online ! ! !
  */
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-// import store from './store'
+if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
 
-
-import "@/permission"; // permission control
-
-// rem h5 适配
-import "amfe-flexible/index.js";
-
-
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
   router,
-  // store,
+  store,
   render: h => h(App)
 })

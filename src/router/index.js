@@ -1,26 +1,23 @@
-/*
- * @Description:
- * @Version: 1.0
- * @Autor: haozhuang
- * @Date: 2020-03-26 16:25:11
- * @LastEditors: haozhuang
- * @LastEditTime: 2020-03-30 11:39:02
- */
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import Router from 'vue-router'
 
-const HelloWorld = () =>
-  import(/* webpackChunkName: "home" */ "@/components/HelloWorld");
+Vue.use(Router)
 
-Vue.use(Router);
+/* Layout */
 
-export default new Router({
-  routes: [
-    {
-      path: "/",
-      name: "HelloWorld",
-      component: HelloWorld,
-      meta: { title: "HelloWorld" }
-    }
-  ]
-});
+export const constantRoutes = [
+  {
+    path: '/404',
+    component: () => import('@/views/404'),
+    hidden: true
+  },
+
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+const router = new Router({
+  routes: constantRoutes
+})
+
+export default router
